@@ -27,7 +27,7 @@ const Trigger = () => {
   useEffect(() => {
     const data = JSON.parse(localStorage.getItem("trigger"));
     console.log(data);
-    action(data.action, data.url, data.param1, data.param2);
+    action(data.action.trim() || "GET", data.url, data.param1, data.param2);
   }, []);
 
   return <div>Trigger:- {response}</div>;
