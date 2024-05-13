@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
-const MyForm = ({ showForm }) => {
+// eslint-disable-next-line react/prop-types
+const MyForm = ({ setShowForm }) => {
   const [action, setAction] = useState("");
   const [url, setUrl] = useState("");
   const [param1, setParam1] = useState("");
@@ -43,7 +44,7 @@ const MyForm = ({ showForm }) => {
           padding: "5px 15px",
         }}
       >
-        <button onClick={() => showForm(false)}>X</button>
+        <button onClick={() => setShowForm(false)}>X</button>
       </div>
       <form
         style={{

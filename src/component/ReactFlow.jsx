@@ -1,4 +1,4 @@
-import { useCallback, useRef, useState } from "react";
+import { useCallback, useRef } from "react";
 import ReactFlow, {
   useNodesState,
   useEdgesState,
@@ -16,13 +16,12 @@ const initialNodes = [
     type: "input",
     data: { label: "Trigger incommimg API call" },
     position: { x: 250, y: 0 },
-    
   },
   {
     id: "2",
     data: { label: "Action outgoing API call" },
     position: { x: 250, y: 100 },
-    style:{ background: "yellow" },
+    style: { background: "yellow" },
     isClickable: true,
   },
 ];
@@ -38,7 +37,8 @@ const initialEdges = [
   },
 ];
 
-const DeleteEdgeDrop = ({ showForm }) => {
+// eslint-disable-next-line react/prop-types
+const DeleteEdgeDrop = ({ setShowForm }) => {
   const edgeUpdateSuccessful = useRef(true);
   const [nodes, , onNodesChange] = useNodesState(initialNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
@@ -67,7 +67,7 @@ const DeleteEdgeDrop = ({ showForm }) => {
   const onNodeClick = useCallback((event, node) => {
     if (node.isClickable) {
       selectedNodeId.current = node.id;
-      showForm(true);
+      setShowForm(true);
     }
   }, []);
 
