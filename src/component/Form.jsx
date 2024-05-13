@@ -20,10 +20,12 @@ const MyForm = ({ setShowForm }) => {
   useEffect(() => {
     const data = JSON.parse(localStorage.getItem("trigger"));
     console.log(data);
-    setAction(data.action || "");
-    setUrl(data.url || "");
-    setParam1(data.param1 || "");
-    setParam2(data.param2 || "");
+    if (data && typeof data === "object") {
+      setAction(data.action || "");
+      setUrl(data.url || "");
+      setParam1(data.param1 || "");
+      setParam2(data.param2 || "");
+    }
   }, []);
 
   return (
